@@ -10,3 +10,17 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 // Put your code here.
+
+// Start R2 at 0.
+@R2
+M=0
+
+// Start the first STEP if R0 > 0.
+@R0
+D=M
+@STEP
+D;JGT
+
+// If it doesn't jump, go to END.
+@END
+0;JMP
