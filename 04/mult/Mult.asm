@@ -24,3 +24,31 @@ D;JGT
 // If it doesn't jump, go to END.
 @END
 0;JMP
+
+// This function adds R1 to R2 and removes 1 from R0.
+// If R0 is more than 0 the function STEP runs again.
+(STEP)
+    // Get R2.
+    @R2
+    D=M
+
+    // Add R1 to it.
+    @R1
+    D=D+M
+
+    // Copy the result back into R2.
+    @R2
+    M=D
+
+    // Reduce R0 by 1.
+    @R0
+    D=M-1
+    M=D
+
+    // If R0 is still > 0 then loop.
+    @STEP
+    D;JGT
+
+(END)
+    @END
+    0;JMP
