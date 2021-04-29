@@ -1,7 +1,7 @@
 class Array{
 	// this method constructs a new array with a user-inputted size
 	function Array new (int size){
-		return size;
+		return Memory.alloc(size);
 	}
 
 	// this method deletes the array created above
