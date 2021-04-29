@@ -1,0 +1,30 @@
+class Memory{
+	static Array RAM;
+	static Array HEAP;
+
+	// this function initializes the ram and the heap and the first few values on the heap
+	function void init(){
+		let RAM = 0;
+		let HEAP = 2048;
+		let HEAP[0] = -1;
+		let HEAP[1] = 16384 - 2048 - 2;
+		return;
+	}
+
+	// this function returns the RAM address
+	function int peek(int address){
+		return RAM[address];
+	}
+
+	// this function inserts a value for RAM's address
+	function void poke(int address, int value){
+		let RAM[address] = value;
+		return;
+	}
+		
+	function Array alloc(int size){
+		var Array current, selected, block;
+		var int currentSize, selectedSize;
+
+	}
+}
