@@ -1,0 +1,142 @@
+class String {
+	
+	field int _maxLength;
+	field int length;
+	field Array chars;
+
+    // this constructor creates a new empty string with a maximum length chosen by the user and an initial length of 0
+    constructor String new(int maxLength) {
+		if(maxLength < 0){
+			do Sys.error(14);
+		}
+		if(maxLength > 0){
+			let chars = Array.new(maxLength);
+		}
+		let _maxLength = maxLength;
+		
+		return this;
+    }
+
+    // this function deletes the string
+    method void dispose() {
+		if(~(chars = 0)){
+			do chars.dispose();
+		}
+		do Memory.deAlloc(this);
+		return;
+    }
+
+    // this function returns the current length of the string
+    method int length() {
+		return length;
+    }
+
+    // this function returns the character at the j location of the string
+    method char charAt(int j) {
+		if((j < 0) | (~(j < length))){
+			do Sys.error(15);
+		}
+		return chars[j];
+    }
+
+    // this function sets the character at the j location of the string to c (or whatever is in the parameter)
+    method void setCharAt(int j, char c) {
+		if((j < 0) | (~(j < length))){
+			do Sys.error(16);			
+		}
+		let chars[j] = c;
+		return;
+    }
+
+    // this function appends the parameter to the string's end and returns the string
+    method String appendChar(char c) {
+		if(_maxLength = length){
+			do Sys.error(17);			
+		}
+		let chars[length] = c;
+		let length = length + 1;
+		return this;
+    }
+
+    // this function clears the last character from  the string
+    method void eraseLastChar() {
+		if(length = 0){
+			do Sys.error(18);			
+		}
+		let length = length - 1;
+		return;
+    }
+	
+    // this function returns the integer value of the string until a non-digit character is detected
+    method int intValue() {
+		var int ret, i, sign;
+		while(i < length){
+			if(i = 0){
+				if(chars[i] = 45){
+					let sign = -1;
+				} else {
+					let sign = 1;
+					if((chars[i] > 47) & (chars[i] < 58)){
+						let ret = (10 * ret) + chars[i] - 48;
+					} else {
+						return ret;
+					}
+				}
+			} else {
+				if((chars[i] > 47) & (chars[i] < 58)){
+					let ret = (10 * ret) + chars[i] - 48;
+				} else {
+					return ret;
+				}
+			}
+			let i = i + 1;
+		}
+		return ret * sign;
+    }
+
+    // this function sets the string to hold a representation of the given value
+    method void setInt(int value) {
+		var int divisor;
+		let length = 0;
+		if(value < 0){
+			do appendChar(45);  // minus
+			let value = -value;
+		} 
+		do addDigits(value);
+		
+		return;
+    }
+	// this function returns the modulus, or remainder, of two parameters
+	function int mod(int x, int y){
+		return x - ((x / y) * y);
+	}
+	
+   
+    method void addDigits(int value) {
+		if(_maxLength = 0){
+			do Sys.error(19);			
+		}
+		if(value < 10){
+			do appendChar(value + 48);
+		} else {
+			do addDigits(value / 10);
+			do appendChar(String.mod(value, 10) + 48);
+		}
+		return;
+    }
+
+    // this function returns the new line character
+    function char newLine() {
+		return 128;
+    }
+
+    // this function returns the backspace character
+    function char backSpace() {
+		return 129;
+    }
+
+    // this function returns the double quote character
+    function char doubleQuote() {
+		return 34;
+    }
+}
