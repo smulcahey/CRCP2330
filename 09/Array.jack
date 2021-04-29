@@ -1,0 +1,13 @@
+class Array{
+	// this method constructs a new array with a user-inputted size
+	function Array new (int size){
+		return size;
+	}
+
+	// this method deletes the array created above
+	method void dispose(){
+		do Memory.delete(this);
+		return;		
+	}
+
+}
