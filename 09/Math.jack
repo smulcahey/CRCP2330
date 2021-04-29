@@ -1,0 +1,70 @@
+class Math{
+	static Array EYE;
+	
+	// this function initializes the array and fills in the first 15 values in the array
+	function void init(){
+	    var int i;
+		let EYE = Array.new(16);
+		let EYE[0] = 1;
+		let i = 1;
+		while(i < 16){
+		    let EYE[i] = EYE[i-1] +  EYE[i-1];
+			let i = i + 1;
+		}
+		return;		
+	}
+	
+	// this function finds the absolute value of the parameter entered by the user
+	function int abs(int x){
+		if(x < 0){
+			return -x;
+		} else {
+			return x;
+		}
+	}
+	
+	// this function finds the minimum of two numbers
+	function int min(int x, int y){
+		if(x > y){
+			return y;
+		} else {
+			return x;
+		}
+	}
+	
+	// this function finds the maximum of two numbers
+	function int max(int x, int y){
+		if(x < y){
+			return y;
+		} else {
+			return x;
+		}
+	}
+
+	// this function finds the modulus, or the remainder, of two numbers
+	function int mod(int x, int y){
+		return x - ((x / y) * y);
+	}
+	
+	// this function returns the product of two numbers
+	function int multiply(int x, int y){
+		var int i, ret;
+		let i = 0;
+		let ret = 0;
+		while(i < 16){
+		    if(Math.getBit(y, i) = 1){
+				let ret = ret + x;
+			}
+			let x = x + x;
+			let i = i + 1;
+		}
+		return ret;
+	}
+	
+	// this function raises numbers in the array to whatever degree the parameter is
+	function int getTwoRaisedTo(int exp){
+		if(exp > 15){
+			return -1;
+		}
+		return EYE[exp];
+	}
