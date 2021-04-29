@@ -1,0 +1,41 @@
+class Sys{
+	static int CYCLES_PER_MS;
+
+	// this function initializes everything needed to be initialized
+	function void init(){
+		let CYCLES_PER_MS = 20000 + 15000;
+		do Memory.init();
+		do Math.init();
+		do Keyboard.init();
+		do Screen.init();
+		do Output.init();
+		do Main.main();
+		do Sys.init();
+		return;
+	}
+
+	// this function halts the program execution
+	function void halt(){
+		while(true){
+			
+		}
+		return;
+	}
+
+	// this functions implements a wait for a user-inputted amount of time in milliseconds and then returns
+	function void wait(int duration){
+		var int i;
+		while(i < (CYCLES_PER_MS * duration)){
+			let i = i + 1;
+		}
+		return;
+	}
+
+	// this function displays an error code and stops the program's execution
+	function void error(int errorCode){
+		do Output.printString("ERR");
+		do Output.printInt(errorCode);
+		do Sys.halt();
+		return;
+	}
+}
