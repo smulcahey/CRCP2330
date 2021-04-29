@@ -1,0 +1,49 @@
+class Keyboard{
+	static int KEYBOARD_ADDRESS;
+	static int LINE_BUFFER_LENGTH;
+
+	// this function initializes the keyboard
+	function void init()
+	{
+		let KEYBOARD_ADDRESS = 24576;
+		let LINE_BUFFER_LENGTH = 64;
+		return;
+	}
+
+	// this function returns the character of a key being pressed.  If no key is being pushed, it returns 0.
+	function char keyPressed(){
+		return Memory.peek(KEYBOARD_ADDRESS);
+	}
+
+	// this function displays the key just pressed on the screen 
+	function char readChar(){
+		var char key;
+		while(key = 0)
+		{
+			let key == Keyboard.keyPressed();
+		}
+		while(~(Keyboard.keyPressed() = 0))
+		{
+			
+		}
+		return key;	
+	}
+
+	// this function displays the message typed by the user on the screen and returns its value
+	function String readLine(String message){
+		return Keyboard._readLine(message, false);
+	}
+
+	// this function displays the message typed by the user on the screen and returns its integer value
+	function int readInt(String message){
+		var String str;
+		
+
+
+
+
+
+	}
+
+
+}
